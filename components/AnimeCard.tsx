@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MotionDiv } from "./MotionDiv";
 
 export interface AnimeProp {
   id: string;
@@ -12,6 +13,11 @@ export interface AnimeProp {
   score: string;
 }
 
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
 //Interface is the way to strict the TYPES of an JS OBJECT
 interface Prop {
   anime: AnimeProp;
@@ -20,7 +26,19 @@ interface Prop {
 
 function AnimeCard({ anime }: Prop) {
   return (
-    <div className="max-w-sm rounded relative w-full">
+    // This first component (MotionDiv) is going to be a CLIENT-SIDE comp and the rest are SERVER-SIDE
+    <MotionDiv
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      transition={{
+        delay: 1,
+        ease: "easeInOut",
+        duration: 1,
+      }}
+      viewport={{ amount: 0 }}
+      className="max-w-sm rounded relative w-full"
+    >
       <div className="relative w-full h-[37vh]">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
@@ -65,7 +83,7 @@ function AnimeCard({ anime }: Prop) {
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
 }
 

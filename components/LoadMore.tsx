@@ -19,18 +19,18 @@ function LoadMore() {
   // it needs to be converted to a client-side component
   // NOW the only thing on the client-side is the LOAD MORE comp
   const { ref, inView } = useInView({});
+
   // the "<AnimeProp>" is a TypeScript semantic to strict the value type as an array
   const [data, setData] = useState<AnimeProp[]>([]);
 
-  const [pagination, setPage] = useState(page);
+  // const [pagination, setPage] = useState(page);
 
   useEffect(() => {
     if (inView) {
-      setPage(pagination + 1);
-
-      fetchAnime(pagination).then((res) => {
+      fetchAnime(page).then((res) => {
         // We want the new page data, but ALSO the previous one
         setData([...data, ...res]);
+        page++;
       });
     }
   }, [inView, data]);
