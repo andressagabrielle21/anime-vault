@@ -10,9 +10,11 @@ import { useEffect, useState } from "react";
 
 // react-intersection-observer is a dependency that founds out when the user hits the END of the page
 import { useInView } from "react-intersection-observer";
-import AnimeCard, { AnimeProp } from "./AnimeCard";
+import AnimeCard from "./AnimeCard";
 
 let page = 2;
+
+export type AnimeCard = JSX.Element;
 
 function LoadMore() {
   // the prefix USE means that it is a HOOK and you CAN'T use hooks on the server-side
@@ -21,9 +23,7 @@ function LoadMore() {
   const { ref, inView } = useInView({});
 
   // the "<AnimeProp>" is a TypeScript semantic to strict the value type as an array
-  const [data, setData] = useState<AnimeProp[]>([]);
-
-  // const [pagination, setPage] = useState(page);
+  const [data, setData] = useState<AnimeCard[]>([]);
 
   useEffect(() => {
     if (inView) {
@@ -39,9 +39,7 @@ function LoadMore() {
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
         {/* the TYPE of the ITEM prop is the AnimeProp prop itself */}
-        {data.map((item: AnimeProp, index: number) => (
-          <AnimeCard key={item.id} anime={item} index={index} />
-        ))}
+        {data}
       </section>
       <section className="flex justify-center items-center w-full">
         <div ref={ref}>

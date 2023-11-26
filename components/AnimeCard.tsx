@@ -24,7 +24,9 @@ interface Prop {
   index: number;
 }
 
-function AnimeCard({ anime }: Prop) {
+// With the index PROP, located in the LoadMore component, every single card will have its animation
+// 
+function AnimeCard({ anime, index }: Prop) {
   return (
     // This first component (MotionDiv) is going to be a CLIENT-SIDE comp and the rest are SERVER-SIDE
     <MotionDiv
@@ -32,7 +34,7 @@ function AnimeCard({ anime }: Prop) {
       initial="hidden"
       animate="visible"
       transition={{
-        delay: 1,
+        delay: index * 0.5,
         ease: "easeInOut",
         duration: 1,
       }}
