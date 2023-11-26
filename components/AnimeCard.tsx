@@ -12,6 +12,7 @@ export interface AnimeProp {
   score: string;
 }
 
+//Interface is the way to strict the TYPES of an JS OBJECT
 interface Prop {
   anime: AnimeProp;
   index: number;
@@ -22,8 +23,8 @@ function AnimeCard({ anime }: Prop) {
     <div className="max-w-sm rounded relative w-full">
       <div className="relative w-full h-[37vh]">
         <Image
-          src={anime.image.original}
-          alt={anime.name}
+          src={`https://shikimori.one${anime.image.original}`}
+          alt={`https://shikimori.one${anime.name}`}
           fill
           className="rounded-xl"
         />
