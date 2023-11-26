@@ -14,6 +14,8 @@ import AnimeCard from "./AnimeCard";
 
 let page = 2;
 
+// the {data} inside the section might not recognize what it should get
+// So it might be interesting to modify the type
 export type AnimeCard = JSX.Element;
 
 function LoadMore() {
@@ -27,6 +29,7 @@ function LoadMore() {
 
   useEffect(() => {
     if (inView) {
+      // We are calling server actions inside a client rendering page
       fetchAnime(page).then((res) => {
         // We want the new page data, but ALSO the previous one
         setData([...data, ...res]);

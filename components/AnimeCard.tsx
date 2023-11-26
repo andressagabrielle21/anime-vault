@@ -18,17 +18,17 @@ const variants = {
   visible: { opacity: 1 },
 };
 
-//Interface is the way to strict the TYPES of an JS OBJECT
+//Interface is the way to strict the TYPES of a JS OBJECT
 interface Prop {
   anime: AnimeProp;
   index: number;
 }
 
 // With the index PROP, located in the LoadMore component, every single card will have its animation
-// 
+//
 function AnimeCard({ anime, index }: Prop) {
   return (
-    // This first component (MotionDiv) is going to be a CLIENT-SIDE comp and the rest are SERVER-SIDE
+    // This first component (MotionDiv) is going to be a CLIENT-SIDE comp and the rest is SERVER-SIDE
     <MotionDiv
       variants={variants}
       initial="hidden"

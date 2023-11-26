@@ -15,9 +15,9 @@ export const fetchAnime = async (page: number) => {
   // Whenever using FETCH we need to use .json() to extract the data from it
 
   const data = await response.json();
-  
+
   // Needed to convert it to a TSX file because of the components call
-  // Now returning the presentation of the data
+  // Now returning as a map over page
   return data.map((item: AnimeProp, index: number) => (
     <AnimeCard key={item.id} anime={item} index={index} />
   ));
