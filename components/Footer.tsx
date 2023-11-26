@@ -15,13 +15,6 @@ function Footer() {
         className="object-contain"
       />
       <div className="flex items-center gap-6">
-        <Image
-          src="./instagram.svg"
-          alt="logo"
-          width={19}
-          height={19}
-          className="object-contain"
-        />
         <Link href="https://www.linkedin.com/in/andressa-gabrielle-souza-611857138/">
           <Image
             src="/linkedin.png"
